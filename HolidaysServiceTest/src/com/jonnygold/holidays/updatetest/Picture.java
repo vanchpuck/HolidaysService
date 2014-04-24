@@ -9,6 +9,8 @@ public class Picture {
 	
 	private String title;
 	
+	private String vkPicture;
+	
 	private byte[] data;
 	
 	public Picture(){}
@@ -16,12 +18,14 @@ public class Picture {
 	public Picture(int id){
 		this.id = id;
 		this.title = null;
+		this.vkPicture = null;
 		this.data = null;
 	}
 	
-	public Picture(int id, String title, byte[] data){
+	public Picture(int id, String title, String vkPicture, byte[] data){
 		this.id = id;
 		this.title = title;
+		this.vkPicture = vkPicture;
 		this.data = data;
 	}
 	
@@ -35,6 +39,10 @@ public class Picture {
 	
 	public byte[] getData() {
 		return Arrays.copyOf(data, data.length);
+	}
+	
+	public String getVkPicture() {
+		return vkPicture;
 	}
 		
 	@Override

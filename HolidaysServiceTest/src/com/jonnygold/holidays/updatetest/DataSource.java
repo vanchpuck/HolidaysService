@@ -28,7 +28,7 @@ public class DataSource {
 	private Connection connection;
 	
 	public void connect() throws SQLException{
-		System.out.println("Соединение...");
+		System.out.println("Подключение...");
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -37,13 +37,13 @@ public class DataSource {
 		connection = DriverManager.getConnection(URL, USER, PASSWORD);
         connection.setAutoCommit(true);
         
-        System.out.println("Соединено");
+        System.out.println("Подключено.");
 	}
 	
 	public void disconnect() throws SQLException{
         System.out.println("Отключение...");
         connection.close();
-        System.out.println("Отключено");
+        System.out.println("Отключено.");
     }
 	
 	public List<HolidayRaw> getAllHolidays(int countryId) throws SQLException{
@@ -77,7 +77,7 @@ public class DataSource {
 					rs.getString("h_title"), 
 					rs.getString("h_date_str"), 
 					rs.getInt("id_type"), 
-					new Picture(rs.getInt("id_image"), rs.getString("img_desc"), rs.getBytes("img")), 
+					new Picture(rs.getInt("id_image"), rs.getString("img_desc"), rs.getString("img_vk"), rs.getBytes("img")), 
 					rs.getString("h_desc"), 
 					countryId, 
 					date)
